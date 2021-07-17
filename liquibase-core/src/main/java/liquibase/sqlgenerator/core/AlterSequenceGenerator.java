@@ -83,6 +83,8 @@ public class AlterSequenceGenerator extends AbstractSqlGenerator<AlterSequenceSt
         if ((statement.getCycle() != null) && (database instanceof OracleDatabase || database instanceof PostgresDatabase)) {
             if (statement.getCycle()) {
                 buffer.append(" CYCLE ");
+            } else if database instanceof PostgresDatabase {
+                buffer.append(" NO CYCLE ");
             } else {
                 buffer.append(" NOCYCLE ");
             }
